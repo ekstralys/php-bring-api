@@ -41,14 +41,6 @@ class BookingClient
         }
     }
 
-    public function customersToOptionArray () {
-        $option = [];
-        foreach ($this->getCustomers() as $customer) {
-            $option[] = ['value' => $customer['customerNumber'], 'label' => $customer['name']];
-        }
-        return $option;
-    }
-
     public function getCustomers () {
         if ($this->_customers) return $this->_customers;
 
