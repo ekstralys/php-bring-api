@@ -1,0 +1,24 @@
+{
+  "name": "peec/bring-api",
+  "description": "Bring API wrapper for PHP.",
+  "type": "library",
+  "version": "0.0.1",
+  "authors": [
+    {
+      "name": "Petter Kjelkenes",
+      "email": "kjelkenes@gmail.com",
+      "homepage": "http://pkj.no"
+    }
+  ],
+  "license": [
+  ],
+  "require": {
+    "php": "~5.5.0|~5.6.0|~7.0.0",
+    "guzzlehttp/guzzle": ">=5.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Peec\\Bring\\API\\": "src/"
+    }
+  }
+}
