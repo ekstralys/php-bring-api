@@ -1,8 +1,8 @@
 <?php
 namespace Peec\Bring\API\Contract\ShippingGuide;
 
-use Peec\Bring\API\ApiEntity;
-use Peec\Bring\API\DataValidationException;
+use Peec\Bring\API\Contract\ApiEntity;
+use Peec\Bring\API\Contract\ContractValidationException;
 
 class PriceRequest extends ApiEntity
 {
@@ -24,7 +24,9 @@ class PriceRequest extends ApiEntity
         'pid' => null,
         'product' => null,
         'language' => null,
-        'volumeSpecial' => null
+        'volumeSpecial' => null,
+        'fromCountry' => null,
+        'toCountry' => null
     ];
 
 
@@ -134,6 +136,16 @@ class PriceRequest extends ApiEntity
     public function setVolumeSpecial($volumeSpecial) {
         return $this->setData('volumeSpecial', $volumeSpecial);
     }
+
+
+    public function setFromCountry($fromCountry) {
+        return $this->addData('fromCountry', $fromCountry);
+    }
+
+    public function setToCountry($toCountry) {
+        return $this->addData('toCountry', $toCountry);
+    }
+
 
     public function validate()
     {

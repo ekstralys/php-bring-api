@@ -1,7 +1,7 @@
 <?php
 namespace Peec\Bring\API\Contract\Booking\BookingRequest\Consignment;
-use Peec\Bring\API\ApiEntity;
-use Peec\Bring\API\DataValidationException;
+use Peec\Bring\API\Contract\ApiEntity;
+use Peec\Bring\API\Contract\ContractValidationException;
 
 class Address extends ApiEntity
 {
@@ -14,6 +14,7 @@ class Address extends ApiEntity
         'city' => null,
         'countryCode' => null,
         'reference' => null,
+        'contact' => null,
         'additionalAddressInfo' => null
     ];
 
@@ -49,6 +50,10 @@ class Address extends ApiEntity
         return $this->setData('additionalAddressInfo', $additionalAddressInfo);
     }
 
+    public function setContact (Contact $contact) {
+        $this->setData('contact', $contact);
+    }
+
     public function validate()
     {
 
@@ -56,7 +61,7 @@ class Address extends ApiEntity
 
         foreach ($required_fields as $f) {
             if (!$this->getData($f)) {
-                throw new DataValidationException('BookingRequest\Consignment\Address requires "'.$f.'" to be set.');
+                throw new ContractValidationException('BookingRequest\Consignment\Address requires "'.$f.'" to be set.');
             }
         }
 

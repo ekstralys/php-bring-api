@@ -6,7 +6,7 @@
  * Time: 6:50 PM
  */
 
-namespace Peec\Bring\API;
+namespace Peec\Bring\API\Client;
 
 
 /**
@@ -24,19 +24,13 @@ class Credentials {
     /**
      * Creates bring credentials object.
      *
+     * @param string $clientUrl Identifier ( your domain ).
      * @param string $clientId Bring Client ID ( e.g. myuser@mydomain.no )
      * @param string $apiKey ( e.g. xxxxxxxxxx-xxxx-xxxxx-xxxxx ) Get it from My Bring settings.
-     * @param string $clientUrl Identifier ( your domain ).
      */
-    public function __construct ($clientId, $apiKey, $clientUrl) {
-        if (!$clientId) {
-            throw new \InvalidArgumentException("\$clientId must not be empty.");
-        }
-        if (!$apiKey) {
-            throw new \InvalidArgumentException("\$apiKey must not be empty.");
-        }
+    public function __construct ($clientUrl, $clientId = null, $apiKey = null) {
         if (!$clientUrl) {
-            throw new \InvalidArgumentException("\$clientUrl must not be empty.");
+            throw new \InvalidArgumentException('$clientUrl must not be empty.');
         }
         $this->clientId = $clientId;
         $this->apiKey = $apiKey;

@@ -1,10 +1,10 @@
 <?php
 namespace Peec\Bring\API\Contract\Booking\BookingRequest;
-use Peec\Bring\API\ApiEntity;
+use Peec\Bring\API\Contract\ApiEntity;
 use Peec\Bring\API\Contract\Booking\BookingRequest\Consignment\Address;
 use Peec\Bring\API\Contract\Booking\BookingRequest\Consignment\Package;
 use Peec\Bring\API\Contract\Booking\BookingRequest\Consignment\Product;
-use Peec\Bring\API\DataValidationException;
+use Peec\Bring\API\Contract\ContractValidationException;
 
 class Consignment extends ApiEntity
 {
@@ -57,23 +57,23 @@ class Consignment extends ApiEntity
     public function validate()
     {
         if (!$this->getData('product')) {
-            throw new DataValidationException('BookingRequest\Consignment requires "product" to be set.');
+            throw new ContractValidationException('BookingRequest\Consignment requires "product" to be set.');
         }
 
         if (!$this->getData('shippingDateTime')) {
-            throw new DataValidationException('BookingRequest\Consignment requires "shippingDateTime" to be set.');
+            throw new ContractValidationException('BookingRequest\Consignment requires "shippingDateTime" to be set.');
         }
 
         if (!$this->getPartiesData('recipient')) {
-            throw new DataValidationException('BookingRequest\Consignment requires "recipient" to be set.');
+            throw new ContractValidationException('BookingRequest\Consignment requires "recipient" to be set.');
         }
 
         if (!$this->getPartiesData('sender')) {
-            throw new DataValidationException('BookingRequest\Consignment requires "sender" to be set.');
+            throw new ContractValidationException('BookingRequest\Consignment requires "sender" to be set.');
         }
 
         if (!$this->getData('packages')) {
-            throw new DataValidationException('BookingRequest\Consignment requires "packages" to be set.');
+            throw new ContractValidationException('BookingRequest\Consignment requires "packages" to be set.');
         }
     }
 

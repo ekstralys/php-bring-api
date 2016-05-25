@@ -1,0 +1,38 @@
+<?php
+namespace Peec\Bring\API\Client;
+
+
+
+class BookingClientException extends \Exception
+{
+
+    private $_errors = [];
+
+    public function  __construct($message = "", $errors = [], $code = 0, Exception $previous = null) {
+
+        parent::__construct($message);
+        $this->_errors = $errors;
+    }
+
+
+    public function setErrors (array $errors) {
+        $this->_errors = $errors;
+    }
+
+    public function getErrors () {
+        return $this->_errors;
+    }
+
+    public function getDetaildMessage() {
+        $message = parent::getMessage();
+        $codes = [];
+        foreach ($this->_errors as $error) {
+            $codes[] = $error['code'];
+        }
+        if ($codes) {
+            $message .= " \nError codes:" . implode(', ', $codes);
+        }
+        return $message;
+    }
+
+}

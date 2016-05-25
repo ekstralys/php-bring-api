@@ -1,5 +1,5 @@
 <?php
-namespace Peec\Bring\API;
+namespace Peec\Bring\API\Contract;
 
 
 /**
@@ -62,14 +62,13 @@ abstract class ApiEntity
     /**
      * Validates this entity. Throws exception if errors.
      * @return mixed
-     * @throws DataValidationException
+     * @throws \Peec\Bring\API\Contract\ContractValidationException
      */
     abstract public function validate();
 
 
     /**
-     * Validates and runs data validations recursively.
-     * @return array Serialized array
+     * @return array serialized entity
      */
     public function toArray () {
         $this->validate();

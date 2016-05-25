@@ -1,8 +1,8 @@
 <?php
 namespace Peec\Bring\API\Contract\Booking\BookingRequest\Consignment;
 
-use Peec\Bring\API\ApiEntity;
-use Peec\Bring\API\DataValidationException;
+use Peec\Bring\API\Contract\ApiEntity;
+use Peec\Bring\API\Contract\ContractValidationException;
 
 
 
@@ -67,16 +67,16 @@ class Package extends ApiEntity
     public function validate()
     {
         if ($this->getData('weightInKg') <= 0) {
-            throw new DataValidationException('BookingRequest\Consignment\Package requires "weightInKg" to be greater then zero.');
+            throw new ContractValidationException('BookingRequest\Consignment\Package requires "weightInKg" to be greater then zero.');
         }
         if ($this->getDimensionsData('heightInCm') <= 0) {
-            throw new DataValidationException('BookingRequest\Consignment\Package requires "heightInCm" to be greater then zero.');
+            throw new ContractValidationException('BookingRequest\Consignment\Package requires "heightInCm" to be greater then zero.');
         }
         if ($this->getDimensionsData('widthInCm') <= 0) {
-            throw new DataValidationException('BookingRequest\Consignment\Package requires "widthInCm" to be greater then zero.');
+            throw new ContractValidationException('BookingRequest\Consignment\Package requires "widthInCm" to be greater then zero.');
         }
         if ($this->getDimensionsData('lengthInCm') <= 0) {
-            throw new DataValidationException('BookingRequest\Consignment\Package requires "lengthInCm" to be greater then zero.');
+            throw new ContractValidationException('BookingRequest\Consignment\Package requires "lengthInCm" to be greater then zero.');
         }
     }
 

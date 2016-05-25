@@ -1,8 +1,8 @@
 <?php
 namespace Peec\Bring\API\Contract\Booking;
 
-use Peec\Bring\API\ApiEntity;
-use Peec\Bring\API\DataValidationException;
+use Peec\Bring\API\Contract\ApiEntity;
+use Peec\Bring\API\Contract\ContractValidationException;
 
 class BookingRequest extends ApiEntity
 {
@@ -26,7 +26,7 @@ class BookingRequest extends ApiEntity
     public function validate()
     {
         if (!$this->getData('consignments')) {
-            throw new DataValidationException('BookingRequest requires at least one of "consignments".');
+            throw new ContractValidationException('BookingRequest requires at least one of "consignments".');
         }
     }
 }

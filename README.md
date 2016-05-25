@@ -12,14 +12,22 @@ composer require peec/bring-api
 
 ## Supporting the following API:
 
-- [x] Booking API
+- [x] Booking API (EDI)
     - [x] Book shipments. https://api.bring.com/booking/api
     - [x] Get Mybring customers. https://api.bring.com/booking/api/customers
-- [ ] Shipping Guide API    
+- [x] Shipping Guide API  
+    - [x] Get estimated prices for packages.
     
     
 ** API's marked with [x] is implemented**
 
+
+## Test (cli)
+
+```
+cd example/
+export BRING_UID="me@myemail.com" && export BRING_API_KEY="xxxxxx-xxxxx-xxx-xxxx" && export BRING_CUSTOMER="BRING__CUSTOMER_NUMBER" && php booking-api.php
+```
 
 ## Contribute
 

@@ -1,21 +1,35 @@
 <?php
 require '../vendor/autoload.php';
 
-use \Peec\Bring\API\BookingClient;
+use \Peec\Bring\API\Client\BookingClient;
 use \Peec\Bring\API\Contract\Booking;
+use \Peec\Bring\API\Data\BringData;
 
-// See http://developer.bring.com/api/booking/ ( Authentication section ) . You will need Client id, api key and client url.
-$client = new BookingClient("Client_id", "Api_key", "Client_Url");
+// These 3 variable credentials is provided via the My Bring login interface.
+$bringUid = getenv('BRING_UID');
+$bringApiKey = getenv('BRING_API_KEY');
+$bringCustomerNumber = getenv('BRING_CUSTOMER');
+
+
+
 
 $bringTestMode = true; // Setting this to false will send orders to Bring! Careful. This is for testing purposes.
 
-$weight = 2; // 2 kg.
-$height = 20;
-$length = 20;
-$width = 20;
+$weight = 1; // 1 kg.
+$length = 31;
+$width = 21;
+$height = 6;
 
-$bringProductId = Booking\BookingRequest\Consignment\Product::PRODUCT_A_POST;
-$bringCustomerNumber = 'A-POST-10005540322'; // change with your customer number.
+$bringProductId = BringData::PRODUCT_MINIPAKKE;
+
+
+
+// See http://developer.bring.com/api/booking/ ( Authentication section ) . You will need Client id, api key and client url.
+$credentials = new \Peec\Bring\API\Client\Credentials("http://mydomain.no", $bringUid, $bringApiKey);
+
+// Create a booking client.
+$client = new BookingClient($credentials);
+
 
 
 // Send package in 5 hours..
@@ -53,9 +67,9 @@ $recipient = new Booking\BookingRequest\Consignment\Address();
 $recipient->setAddressLine("Veien 32");
 $recipient->setCity("Bergen");
 $recipient->setCountryCode("NO");
-$recipient->setName("Min bedrift");
+$recipient->setName("Privat person");
 $recipient->setPostalCode(5097);
-$recipient->setReference("KundeID");
+$recipient->setReference("Customer-id-in-DB");
 $consignment->setRecipient($recipient);
 
 
@@ -67,6 +81,10 @@ $sender->setCity("Bergen");
 $sender->setCountryCode("NO");
 $sender->setName("Min bedrift");
 $sender->setPostalCode(5097);
+$contact = new Booking\BookingRequest\Consignment\Contact();
+$contact->setEmail('mycompany@test.com');
+$contact->setPhoneNumber('40000000');
+$sender->setContact($contact);
 $consignment->setSender($sender);
 
 
@@ -80,10 +98,19 @@ $request->addConsignment($consignment);
 $request->setTestIndicator($bringTestMode);
 
 try {
-    $client->bookShipment($request);
-} catch (GuzzleHttp\Exception\RequestException $e) {
-    throw $e; // 400 responses / error with API key / login to mybring..
-} catch (\Peec\Bring\API\DataValidationException $e) {
-    throw $e; // just re-throw for testing.
+
+
+    echo "Using Bring UID: $bringUid, Key: $bringApiKey, Customer number: $bringCustomerNumber\n";
+
+    $result = $client->bookShipment($request);
+    print_r($result);
+
+// Catch response errors.
+} catch (\Peec\Bring\API\Client\BookingClientException $e) {
+    print_r($e->getErrors());
+    throw $e;
+// Catch errors that relates to the contract / request.
+} catch (\Peec\Bring\API\Contract\ContractValidationException $e) {
+    throw $e;
 }
 

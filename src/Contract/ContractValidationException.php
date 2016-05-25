@@ -1,9 +1,8 @@
 <?php
 
-namespace Peec\Bring\API;
+namespace Peec\Bring\API\Contract;
 
-
-class DataValidationException extends \Exception
+class ContractValidationException extends \Exception
 {
 
     protected $_fields = [];

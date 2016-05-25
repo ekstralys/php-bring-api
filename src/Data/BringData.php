@@ -1,4 +1,6 @@
 <?php
+namespace Peec\Bring\API\Data;
+
 /**
  * Created by PhpStorm.
  * User: peec
@@ -6,7 +8,7 @@
  * Time: 10:34 PM
  */
 
-class Bring {
+class BringData {
 
 
     const PRODUCT_SERVICEPAKKE = 'SERVICEPAKKE';
