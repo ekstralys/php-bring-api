@@ -30,8 +30,9 @@ class BookingClient extends Client
             return $this->_customersCache;
         } catch (\GuzzleHttp\Exception\RequestException $e) {
             $resp = $e->getResponse();
-            $ex = new BookingClientException("Could not fetch customers from Bring API. Are Api key details correct ?");
-            throw $ex;
+
+
+            throw new BookingClientException("Could not fetch customers from Bring API. Are Api key details correct (http#{$resp->getStatusCode()}) ?");
         }
     }
 
@@ -60,7 +61,7 @@ class BookingClient extends Client
                     }
                 }
             }
-            throw new BookingClientException("Got error from Bring API.", $errors);
+            throw new BookingClientException("Got error from Bring API (http#{$resp->getStatusCode()}).", $errors);
         }
     }
 
