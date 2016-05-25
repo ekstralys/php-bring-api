@@ -108,7 +108,7 @@ class PriceRequest extends ApiEntity
      * @return $this
      */
     public function setEdi($edi) {
-        return $this->setData('edi', $edi);
+        return $this->setData('edi', (bool)$edi);
     }
 
     /**
@@ -116,7 +116,7 @@ class PriceRequest extends ApiEntity
      * @return $this
      */
     public function setPostingAtPostOffice($postingAtPostOffice) {
-        return $this->setData('postingAtPostOffice', $postingAtPostOffice);
+        return $this->setData('postingAtPostOffice', (bool)$postingAtPostOffice);
     }
 
     /**
@@ -158,7 +158,7 @@ class PriceRequest extends ApiEntity
      * @return $this
      */
     public function setLanguage($language) {
-        return $this->addData('language', $language);
+        return $this->setData('language', $language);
     }
 
     /**
@@ -166,7 +166,7 @@ class PriceRequest extends ApiEntity
      * @return $this
      */
     public function setVolumeSpecial($volumeSpecial) {
-        return $this->setData('volumeSpecial', $volumeSpecial);
+        return $this->setData('volumeSpecial', (bool)$volumeSpecial);
     }
 
 
@@ -175,7 +175,7 @@ class PriceRequest extends ApiEntity
      * @return $this
      */
     public function setFromCountry($fromCountry) {
-        return $this->addData('fromCountry', $fromCountry);
+        return $this->setData('fromCountry', $fromCountry);
     }
 
     /**
@@ -183,7 +183,7 @@ class PriceRequest extends ApiEntity
      * @return $this
      */
     public function setToCountry($toCountry) {
-        return $this->addData('toCountry', $toCountry);
+        return $this->setData('toCountry', $toCountry);
     }
 
 

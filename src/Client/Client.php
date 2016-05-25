@@ -73,6 +73,10 @@ abstract class Client {
                     $add .= "&$k=" . urlencode($value);
                 }
                 unset($data[$k]);
+            } else if ($arr === null) {
+                unset($data[$k]);
+            } else if (is_bool($arr)) {
+                $data[$k] = $arr ? 'true' : 'false';
             }
         }
 
