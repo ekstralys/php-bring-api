@@ -24,7 +24,7 @@ $request->addAdditional(ShippingGuideData::EVARSLING); // Makes it cheaper, and 
 
 // Set possible shipping products
 $request->addProduct(BringData::PRODUCT_SERVICEPAKKE)
-    ->addProduct(BringData::PRODUCT_A_POST)
+    ->addProduct(BringData::PRODUCT_MINIPAKKE)
     ->addProduct(BringData::PRODUCT_PA_DOREN);
 
 
