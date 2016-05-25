@@ -103,45 +103,85 @@ class PriceRequest extends ApiEntity
         return $this->setData('time', $dateTime->format('H:i'));
     }
 
+    /**
+     * @param $edi
+     * @return $this
+     */
     public function setEdi($edi) {
         return $this->setData('edi', $edi);
     }
 
+    /**
+     * @param $postingAtPostOffice
+     * @return $this
+     */
     public function setPostingAtPostOffice($postingAtPostOffice) {
         return $this->setData('postingAtPostOffice', $postingAtPostOffice);
     }
 
+    /**
+     * @param $additional
+     * @return $this
+     */
     public function addAdditional($additional) {
         return $this->addData('additional', $additional);
     }
 
+    /**
+     * @param $priceAdjustments
+     * @return $this
+     */
     public function setPriceAdjustments($priceAdjustments) {
         return $this->setData('priceAdjustments', $priceAdjustments);
     }
 
 
+    /**
+     * @param $pid
+     * @return $this
+     */
     public function setPid($pid) {
         return $this->setData('pid', $pid);
     }
 
 
+    /**
+     * @param $product
+     * @return $this
+     */
     public function addProduct($product) {
         return $this->addData('product', $product);
     }
 
+    /**
+     * @param $language
+     * @return $this
+     */
     public function setLanguage($language) {
         return $this->addData('language', $language);
     }
 
+    /**
+     * @param $volumeSpecial
+     * @return $this
+     */
     public function setVolumeSpecial($volumeSpecial) {
         return $this->setData('volumeSpecial', $volumeSpecial);
     }
 
 
+    /**
+     * @param $fromCountry
+     * @return $this
+     */
     public function setFromCountry($fromCountry) {
         return $this->addData('fromCountry', $fromCountry);
     }
 
+    /**
+     * @param $toCountry
+     * @return $this
+     */
     public function setToCountry($toCountry) {
         return $this->addData('toCountry', $toCountry);
     }
