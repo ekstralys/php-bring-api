@@ -8,6 +8,7 @@ Features:
 - Forces strict data types
 - Validation before API request
 - PSR-4 compliant
+- Supports My bring authorization for API's that supports it ( meaning no rate limiting ).
 
 See example folder for usage.
 
@@ -32,8 +33,8 @@ composer require peec/bring-api@^1.0
     - [x] Get Mybring customers. https://api.bring.com/booking/api/customers
 - [x] Shipping Guide API  
     - [x] Get estimated prices for packages. 
-- [ ] Tracking API
-    - [ ] Track consignments
+- [x] Tracking API
+    - [x] Track consignments
     
 ** API's marked with [x] is implemented**
 
