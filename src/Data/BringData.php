@@ -10,6 +10,12 @@ namespace Peec\Bring\API\Data;
 
 class BringData {
 
+    const LANG_NORWEGIAN = 'no';
+    const LANG_ENGLISH = 'en';
+    const LANG_DANISH = 'da';
+    const LANG_SWEDISH = 'sv';
+
+
 
     const PRODUCT_SERVICEPAKKE = 'SERVICEPAKKE';
     const PRODUCT_BPAKKE_DOR_DOR = 'BPAKKE_DOR-DOR';

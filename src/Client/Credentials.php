@@ -63,4 +63,9 @@ class Credentials {
     }
 
 
+    public function hasAuthorizationData () {
+        return $this->clientId !== null && $this->apiKey !== null;
+    }
+
+
 }

@@ -4,6 +4,14 @@ namespace Peec\Bring\API\Client;
 use GuzzleHttp\Exception\RequestException;
 use Peec\Bring\API\Contract\ShippingGuide\PriceRequest;
 
+
+/**
+ * Class ShippingGuideClient
+ *
+ * @todo We can implement My bring credentials for shipping guide requests once Bring has fixed the API to work with RESTFUL and not SOAP. See http://developer.bring.com/api/shipping-guide/
+ *
+ * @package Peec\Bring\API\Client
+ */
 class ShippingGuideClient extends Client
 {
     const BRING_PRICES_API = 'https://api.bring.com/shippingguide/products/price.json';
@@ -26,8 +34,7 @@ class ShippingGuideClient extends Client
             $json = json_decode($request->getBody(), true);
             return $json;
         } catch (\GuzzleHttp\Exception\RequestException $e) {
-            $resp = $e->getResponse();
-            throw new ShippingGuideClientException("Could not retrieve prices. {$resp->getStatusCode()}): " . $resp->getBody());
+            throw new ShippingGuideClientException("Could not retrieve prices.", null, $e);
         }
     }
 
