@@ -36,6 +36,15 @@ abstract class ApiEntity
         return $this->_data[$key];
     }
 
+
+    protected function removeData($key) {
+        if (isset($this->_data[$key])) {
+            unset($this->_data[$key]);
+        }
+        return $this;
+    }
+
+
     /**
      * Adds data to data array
      * @param $key Identifier.

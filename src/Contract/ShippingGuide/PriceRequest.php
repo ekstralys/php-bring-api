@@ -108,7 +108,11 @@ class PriceRequest extends ApiEntity
      * @return $this
      */
     public function setEdi($edi) {
-        return $this->setData('edi', (bool)$edi);
+        if ($edi) {
+            return $this->setData('edi', (bool)$edi);
+        } else {
+            return $this->removeData('edi');
+        }
     }
 
     /**
