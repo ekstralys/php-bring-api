@@ -2,7 +2,7 @@
   "name": "peec/bring-api",
   "description": "Bring API wrapper for PHP.",
   "type": "library",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "authors": [
     {
       "name": "Petter Kjelkenes",
