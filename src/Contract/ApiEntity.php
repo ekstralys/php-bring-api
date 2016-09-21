@@ -84,6 +84,25 @@ abstract class ApiEntity
         return $this->dataToArray($this->_data);
     }
 
+    public function toXml ($rootElement = 'root') {
+        $xml = new \SimpleXMLElement('<'.$rootElement.'/>');
+        $result = $this->toArray();
+        $this->recursiveXml($xml, $result);
+        return $xml->asXML();
+    }
+
+    private function recursiveXml(\SimpleXMLElement $object, array $data)
+    {
+        foreach ($data as $key => $value) {
+            if (is_array($value)) {
+                $new_object = $object->addChild($key);
+                $this->recursiveXml($new_object, $value);
+            } else {
+                $object->addChild($key, $value);
+            }
+        }
+    }
+
     /**
      * Recursively serialize data and ApiEntity instances.
      * @param array $data Array of data

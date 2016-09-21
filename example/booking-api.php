@@ -20,7 +20,7 @@ $length = 31;
 $width = 21;
 $height = 6;
 
-$bringProductId = BringData::PRODUCT_MINIPAKKE;
+$bringProductId = BringData::PRODUCT_SERVICEPAKKE;
 
 
 

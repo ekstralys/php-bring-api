@@ -37,11 +37,11 @@ abstract class Client {
      */
     protected function request ($method, $endpoint, array $options = []) {
 
-        $options = array_merge($options, [
+        $options = array_merge([
             'headers' => [
                 'Accept'     => 'application/json'
             ]
-        ]);
+        ], $options);
 
         if ($credentials = $this->_credentials) {
             $options['headers']['X-Bring-Client-URL'] = $credentials->getClientUrl();
@@ -59,6 +59,17 @@ abstract class Client {
         $req = $this->_client->request($method, $endpoint, $options);
         return $req;
     }
+
+    protected function xmlRequest ($method, $endpoint, array $options = []) {
+        $options = array_merge([
+            'headers' => [
+                'Accept'     => 'text/xml',
+                'Content-type' => 'text/xml'
+            ]
+        ], $options);
+        return $this->request($method, $endpoint, $options);
+    }
+
 
     /**
      * https://github.com/guzzle/guzzle/issues/1196
