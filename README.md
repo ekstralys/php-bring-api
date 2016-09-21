@@ -1,5 +1,8 @@
 # PHP Bring API 
 
+[![Build Status](https://travis-ci.org/peec/php-bring-api.svg?branch=master)](https://travis-ci.org/peec/php-bring-api)
+
+
 Use this API with any PHP application ( Magento, Wordpress, Drupal, etc. ).
 
 Features:
