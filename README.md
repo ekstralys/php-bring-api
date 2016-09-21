@@ -38,6 +38,7 @@ composer require peec/bring-api@^1.0
     - [x] Get estimated prices for packages. 
 - [x] Tracking API
     - [x] Track consignments
+- [x] Easy Return Service API    
     
 ** API's marked with [x] is implemented**
 
