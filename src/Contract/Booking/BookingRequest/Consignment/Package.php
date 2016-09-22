@@ -25,8 +25,8 @@ class Package extends ApiEntity
 
     public function setWeightInKg ($weightInKg) {
         $val = (float)$weightInKg;
-        if ($val <= 0) {
-            throw new \InvalidArgumentException("Argument weightInKg must be greater then zero.");
+        if ($val < 0) {
+            throw new \InvalidArgumentException("Argument weightInKg must be greater or equal then zero.");
         }
         return $this->setData('weightInKg', $val);
     }
@@ -66,16 +66,16 @@ class Package extends ApiEntity
 
     public function validate()
     {
-        if ($this->getData('weightInKg') <= 0) {
+        if ($this->getData('weightInKg') < 0) {
             throw new ContractValidationException('BookingRequest\Consignment\Package requires "weightInKg" to be greater then zero.');
         }
-        if ($this->getDimensionsData('heightInCm') <= 0) {
+        if ($this->getDimensionsData('heightInCm') < 0) {
             throw new ContractValidationException('BookingRequest\Consignment\Package requires "heightInCm" to be greater then zero.');
         }
-        if ($this->getDimensionsData('widthInCm') <= 0) {
+        if ($this->getDimensionsData('widthInCm') < 0) {
             throw new ContractValidationException('BookingRequest\Consignment\Package requires "widthInCm" to be greater then zero.');
         }
-        if ($this->getDimensionsData('lengthInCm') <= 0) {
+        if ($this->getDimensionsData('lengthInCm') < 0) {
             throw new ContractValidationException('BookingRequest\Consignment\Package requires "lengthInCm" to be greater then zero.');
         }
     }
